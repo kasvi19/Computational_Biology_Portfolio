@@ -27,10 +27,10 @@ def process_fasta_file(input_file,output_file=None):
         at_content=calculate_at_content(seq)
         temp=melting_temp(seq)
         results.append([record.id,gc_content,at_content,temp])
-        print(f"Sequence ID: {seq_id}"\n)
-        print(f"GC content: {gc_content}".2f%\n)
-        print(f"AT content: {at_content}".2f%\n)
-        print(f"Melting temperature: {temp}".2f\n)
+        print(f"Sequence ID: {seq_id}")
+        print(f"GC content: {gc_content:.2f}%")
+        print(f"AT content: {at_content:.2f}%")
+        print(f"Melting temperature: {temp:.2f}%")
     if output_file:
         with open(output_file,'w',newline='') as csvfile:
             writer=csv.writer(csvfile)
@@ -38,4 +38,9 @@ def process_fasta_file(input_file,output_file=None):
             writer.writerows(results)
         print(f"Results saved to {output_file}")
 
-input_file='data/sequence.fasta'
+#Analuzing coronavirus.fasta from Sample_Data folder
+input_file='Sample_Data\coronavirus.fasta'
+output_file="Coronavirus_at_gc_tm.csv"
+process_fasta_file(input_file,output_file)
+
+    
