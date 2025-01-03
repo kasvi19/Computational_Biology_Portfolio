@@ -1,0 +1,41 @@
+
+from Bio import SeqIO
+import csv
+
+def calculate_gc_content(seq):
+    g_count=seq.count('G')
+    c_count=seq.count('C')
+    return ((g_count+c_count)/len(seq))*100
+
+
+def calculate_at_content(seq):
+    a_count=seq.count('A')
+    t_count=seq.count('T')
+    return ((a_count+t_count)/len(seq))*100
+
+def melting_temp(seq):
+    gc_content=calculate_gc_content(seq)
+    at_content=calculate_at_content(seq)
+    return (2*(at_content)*len(seq)/100+4*(gc_content)*len(seq)/100)
+
+def process_fasta_file(input_file,output_file=None):
+    results=[]
+    for record in SeqIO.parse(input_file, "fasta"):
+        seq_id=record.id 
+        seq=str(record.seq).upper()
+        gc_content=calculate_gc_content(seq)
+        at_content=calculate_at_content(seq)
+        temp=melting_temp(seq)
+        results.append([record.id,gc_content,at_content,temp])
+        print(f"Sequence ID: {seq_id}"\n)
+        print(f"GC content: {gc_content}".2f%\n)
+        print(f"AT content: {at_content}".2f%\n)
+        print(f"Melting temperature: {temp}".2f\n)
+    if output_file:
+        with open(output_file,'w',newline='') as csvfile:
+            writer=csv.writer(csvfile)
+            writer.writerow(['Sequence ID','GC content','AT content','Melting temperature'])
+            writer.writerows(results)
+        print(f"Results saved to {output_file}")
+
+input_file='data/sequence.fasta'
