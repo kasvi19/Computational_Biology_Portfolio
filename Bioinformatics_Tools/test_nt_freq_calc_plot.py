@@ -29,7 +29,6 @@ def test_save_nt_freq_to_csv(tmp_path):
 
     save_nt_freq_to_csv(frequencies, output_file)
 
-    # Read the CSV and validate its content
     with open(output_file, 'r') as f:
         reader = csv.reader(f)
         rows = list(reader)
@@ -46,8 +45,6 @@ def test_plot_nt_freq(tmp_path):
         "seq2": {'A': 50.0, 'T': 0.0, 'G': 25.0, 'C': 25.0},
     }
     output_image = tmp_path / "test_plot.png"
-
-    # Ensure plot is generated without errors
     plot_nt_freq(frequencies, output_image)
 
     assert os.path.exists(output_image)
@@ -71,7 +68,6 @@ def test_pipeline_with_fasta(tmp_path):
 
     process_fasta_file(fasta_file, output_csv=output_csv, output_image=output_image)
 
-    # Assert CSV and plot files are created
     assert os.path.exists(output_csv)
     assert os.path.exists(output_image)
 
