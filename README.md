@@ -15,3 +15,7 @@
 
     #5 Notebooks/
         Jupyter Notebooks that integrate multiple scripts and provide end-to-end workflows for analyzing biological data or exploring datasets.
+
+    #Pre-Requisites:
+    - To use this repository, you **must** have Biopython installed. 
+    -  Additionally, I've used pytest for all tests (with a custom celebratory message if they pass!).
