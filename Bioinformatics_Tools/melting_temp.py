@@ -42,17 +42,12 @@ def process_fasta_file(input_file,output_file=None):
         print(f"Sequence ID: {seq_id}")
         print(f"GC content: {gc_content:.2f}%")
         print(f"AT content: {at_content:.2f}%")
-        print(f"Melting temperature: {temp:.2f}%")
+        print(f"Melting temperature: {temp:.2f}")
     if output_file:
-        # Create an 'output' directory if it doesn't exist
         output_dir = os.path.join(os.path.dirname(input_file), 'output')
         if not os.path.exists(output_dir):
             os.makedirs(output_dir)
-
-        # Generate the complete path for the output file
         output_file_path = os.path.join(output_dir, output_file)
-        
-        # Write results to the CSV file
         with open(output_file_path, 'w', newline='') as csvfile:
             writer = csv.writer(csvfile)
             writer.writerow(['Sequence ID', 'GC content', 'AT content', 'Melting temperature'])
@@ -60,8 +55,8 @@ def process_fasta_file(input_file,output_file=None):
         print(f"Results saved to {output_file_path}")
 
 #Analuzing coronavirus.fasta from Sample_Data folder
-input_file='Sample_Data\coronavirus.fasta'
-output_file="Coronavirus_at_gc_tm.csv"
-process_fasta_file(input_file,output_file)
+input_file = os.path.join(os.path.dirname(__file__), '../Sample_Data/coronavirus.fasta')
+output_file = os.path.join(os.path.dirname(__file__), '../Sample_Data/tm.csv')
+process_fasta_file(input_file, output_file)
 
     
