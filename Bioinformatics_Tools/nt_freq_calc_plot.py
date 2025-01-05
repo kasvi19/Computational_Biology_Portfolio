@@ -34,7 +34,7 @@ def save_nt_freq_to_csv(frequencies, output_file):
     print(f"Nucleotide frequencies saved to {output_file}")
 
 # Visualize nucleotide frequencies as a grouped bar chart
-def plot_nt_freq(frequencies, output_image):
+def plot_nt_freq(frequencies, output_image, show_plot=False):
     plt.figure(figsize=(10, 6))
     nucleotides=['A', 'T', 'G', 'C']
     x_positions = np.arange(4) # A, T, G, C
@@ -56,12 +56,10 @@ def plot_nt_freq(frequencies, output_image):
     plt.tight_layout()
     
     plt.savefig(output_image)
-    plt.show()
+    if show_plot:
+        plt.show()
+    plt.close()
     print(f"Grouped bar plot saved to {output_image}")
-
-    plt.savefig(output_image)
-    plt.show()
-    print(f"Line plot saved to {output_image}")
 
 # Main function to process FASTA file, calculate frequencies, and generate outputs
 def process_fasta_file(input_file, output_csv=None, output_image=None):

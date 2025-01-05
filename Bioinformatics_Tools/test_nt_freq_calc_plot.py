@@ -13,7 +13,7 @@ from nt_freq_calc_plot import calculate_freq, save_nt_freq_to_csv, plot_nt_freq
         ("AATTGGCC", {'A': 25.0, 'T': 25.0, 'G': 25.0, 'C': 25.0}),
         ("AAAA", {'A': 100.0, 'T': 0.0, 'G': 0.0, 'C': 0.0}),
         ("", {'A': 0.0, 'T': 0.0, 'G': 0.0, 'C': 0.0}),
-    ]
+    ],
 )
 def test_calculate_freq(sequence, expected_frequencies):
     assert calculate_freq(sequence) == expected_frequencies
