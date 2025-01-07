@@ -1,2 +1,2 @@
-Total Sequences,Total Codons,Total AA,Stop Codons,Invalid Codons
-9,0,8980,9,0
+Total Sequences,Total Stop Codons,Total AA,Invalid Codons
+9,9,8980,0
